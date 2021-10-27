@@ -1,20 +1,50 @@
 .board{
-    //background: darken($color: #bdb2ff, $amount: 10);
+    position: relative;
+    z-index: 1;
     border-radius: 20px;
-    //min-width: 60vh;
-    //min-height: 600px;
     padding: 10px;
     margin: 20px;
-
-    box-shadow: 0 0 4px 2px rgba($color: #000000, $alpha: 0.07);
-
-    display: flex;
-    flex-direction: column;
-
+    
+    //box-shadow: 0 0 4px 2px rgba($color: #000000, $alpha: 0.07);
+    
+    /* display: flex;
+    flex-direction: column; */
+    
+    .time{
+        background-color: lighten($color: #0E1A29, $amount: 10);
+        border-radius: 12px;
+        padding: 10px;
+        margin: 0px 8px;
+        height: 62px;
+        
+        .time-bar{
+            .bar{
+                margin-top: 10px;
+                background: white;
+                height: 8px;
+                border-radius: 4px;
+                
+                animation: roundtime calc(var(--duration) * 1s) linear forwards;
+                transform-origin: left center;
+            }
+        }
+        
+        @keyframes roundtime {
+            to {
+                /* More performant than animating `width` */
+                transform: scaleX(0);
+            }
+        }
+    }
+    
     .element-container{
+        position: relative;
+        z-index: 1;
         width: 420px;
+        height: fit-content;
         display: flex;
         flex-wrap: wrap;
+        
 
         .element {
             flex: 25%;
@@ -33,7 +63,7 @@
                 justify-content: center;
     
                 border-radius: 12px;
-                background: darken($color: #bdb2ff, $amount: 5);
+                background: lighten($color: #0E1A29, $amount: 15);
 
                 transform: rotate3d(0,1,0,180deg);
     
@@ -41,15 +71,59 @@
     
                 &:hover{
                     
-                    background: darken($color: #bdb2ff, $amount: 20);
+                    background: lighten($color: #0E1A29, $amount: 30);
                 }
             }
     
             .active{
                 transform: rotate3d(0,1,0,0deg);
-                background: #a0c4ff !important;
+                //background: #a0c4ff !important;
             }
         }
+
+        
+
     }
+}
+
+.float-btn{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    background: rgba($color: white, $alpha: 0.1);
+
+    .message{
+        font-size: 24px;
+        text-align: center;
+    }    
     
+    i{
+        /* position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); */
+
+        font-size: 180px;
+        font-weight: bolder;
+
+        transition: all 0.3s ease;
+        
+
+        &:hover{
+            cursor: pointer;
+            color: #0E1A29;
+            //transform: scale(1.1);
+        }
+    } 
 }

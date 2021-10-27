@@ -1,82 +1,50 @@
 <div class="content">
-    <div class="time">
-
-    </div>
     <div class="board">
+        <div class="time" *ngIf="difficulty>1">
+            <div *ngIf="startedGame" class="timer">
+                Tiempo {{timer}}
+            </div>
+            <div [class.time-bar]="startedGame" style="--duration: {{time}};" data-style="smooth">
+                <div class="bar"></div>
+            </div>
+        </div>
         <div class="element-container">
-
+            
+            
             <div class="element" *ngFor="let card of cards; index as i">
-                <div (click)="openCard(i)" [ngClass]="{'active': flippedCards[i]!=0}" class="card">
-                    <i *ngIf="flippedCards[i]==0" class='bx bx-question-mark bx-flip-horizontal' ></i>
+                <div (click)="openCard(i)" [ngClass]="flippedCards[i]!=0 ? 'color'+getIndexIcon(card) : ''" [class.active]="flippedCards[i]!=0" class="card">
+                    <!-- <i *ngIf="flippedCards[i]==0" class='bx bx-question-mark bx-flip-horizontal' ></i> -->
                     <i [ngClass]="flippedCards[i]!=0 ? cards[i] : ''" *ngIf="flippedCards[i]" class='bx'></i>
                 </div>
-            </div>
-            <!-- <div (click)="toggle(1)" [ngClass]="{'active': flippedCards[1]}" class="card">
-                <i *ngIf="!flippedCards[1]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[1]" class='bx'></i>
-            </div>
-            <div (click)="toggle(2)" [ngClass]="{'active': flippedCards[2]}" class="card">
-                <i *ngIf="!flippedCards[2]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[2]" class='bx'></i>
-            </div>
-            <div (click)="toggle(3)" [ngClass]="{'active': flippedCards[3]}" class="card">
-                <i *ngIf="!flippedCards[3]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[3]" class='bx'></i> -->
+            </div>            
+            
+        </div>   
 
+        <div *ngIf="showBigButton && !gameOver" class="float-btn play-button">            
+            <div class="message">
+                Dificultad: 
+                <span *ngIf="difficulty!=2 && difficulty!=3">Fácil</span>
+                <span *ngIf="difficulty==2">Normal</span>
+                <span *ngIf="difficulty==3">Dificil</span>
+                <br>
+                Da clic en el botón para comenzar
+            </div>
+            <i (click)="startGame()" class='bx bx-play'></i>
         </div>
-        <!-- <div class="row">
-            <div (click)="toggle(4)" [ngClass]="{'active': flippedCards[4]}" class="card">
-                <i *ngIf="!flippedCards[4]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[4]" class='bx'></i>
+        
+        <div *ngIf="gameOver" class="float-btn restart-button">
+            <div class="message">
+                ¡Se te acabó el tiempo!
             </div>
-            <div (click)="toggle(5)" [ngClass]="{'active': flippedCards[5]}" class="card">
-                <i *ngIf="!flippedCards[5]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[5]" class='bx'></i>
-            </div>
-            <div (click)="toggle(6)" [ngClass]="{'active': flippedCards[6]}" class="card">
-                <i *ngIf="!flippedCards[6]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[6]" class='bx'></i>
-            </div>
-            <div (click)="toggle(7)" [ngClass]="{'active': flippedCards[7]}" class="card">
-                <i *ngIf="!flippedCards[7]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[7]" class='bx'></i>
-            </div>           
+            <i (click)="restartGame()" class='bx bx-revision'></i>
         </div>
-        <div class="row">
-            <div (click)="toggle(8)" [ngClass]="{'active': flippedCards[8]}" class="card">
-                <i *ngIf="!flippedCards[8]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[8]" class='bx'></i>
+        
+        <div *ngIf="victory" class="float-btn restart-button">
+            <div class="message">
+                ¡Ganaste!
             </div>
-            <div (click)="toggle(9)" [ngClass]="{'active': flippedCards[9]}" class="card">
-                <i *ngIf="!flippedCards[9]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[9]" class='bx'></i>
-            </div>
-            <div (click)="toggle(10)" [ngClass]="{'active': flippedCards[10]}" class="card">
-                <i *ngIf="!flippedCards[10]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[10]" class='bx'></i>
-            </div>
-            <div (click)="toggle(11)" [ngClass]="{'active': flippedCards[11]}" class="card">
-                <i *ngIf="!flippedCards[11]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[11]" class='bx'></i>
-            </div>           
+            <i (click)="restartGame()" class='bx bx-revision'></i>
         </div>
-        <div class="row">
-            <div (click)="toggle(12)" [ngClass]="{'active': flippedCards[12]}" class="card">
-                <i *ngIf="!flippedCards[12]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[12]" class='bx'></i>
-            </div>
-            <div (click)="toggle(13)" [ngClass]="{'active': flippedCards[13]}" class="card">
-                <i *ngIf="!flippedCards[13]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[13]" class='bx'></i>
-            </div>
-            <div (click)="toggle(14)" [ngClass]="{'active': flippedCards[14]}" class="card">
-                <i *ngIf="!flippedCards[14]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[14]" class='bx'></i>
-            </div>
-            <div (click)="toggle(15)" [ngClass]="{'active': flippedCards[15]}" class="card">
-                <i *ngIf="!flippedCards[15]" class='bx bx-question-mark'></i>
-                <i *ngIf="flippedCards[15]" class='bx'></i>
-            </div>           
-        </div> -->
     </div>
+
 </div>
