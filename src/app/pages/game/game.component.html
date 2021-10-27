@@ -1,9 +1,15 @@
 <div class="content">
     <div class="board">
         <div class="time" *ngIf="difficulty>1">
-            <div *ngIf="startedGame" class="timer">
-                Tiempo {{timer}}
+            <div class="messages">
+                <div *ngIf="startedGame" class="timer">
+                    <span>Tiempo:</span> {{timer}}
+                </div>
+                <div *ngIf="startedGame || gameOver" class="timer">
+                    <span>Errores:</span> {{mistakes}}
+                </div>
             </div>
+
             <div [class.time-bar]="startedGame" style="--duration: {{time}};" data-style="smooth">
                 <div class="bar"></div>
             </div>

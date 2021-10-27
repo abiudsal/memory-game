@@ -1,6 +1,54 @@
 .title{
     font-size: 96px;
     margin-bottom: 50px;
+    margin-top: 100px;
+    border-radius: 25px;
+    padding: 0 30px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    //-webkit-text-stroke-width: 3px;
+    //-webkit-text-stroke-color: black;
+
+    text-shadow: 5px 5px 1px #bdb2ff;
+
+    transition: all 0.5s ease-in-out;
+
+    animation: text-shadow 5s ease;
+    animation-iteration-count:infinite;    
+}
+
+@keyframes text-shadow {
+    20%{
+        text-shadow: 5px 5px 1px #f94144;
+        //background: #f9844a;
+    }
+    40%{
+        text-shadow: 5px 5px 1px #f9844a;
+        //background: #90be6d;
+    }
+    60%{
+        text-shadow: 5px 5px 1px #f9c74f;
+    }
+    80%{
+        text-shadow: 5px 5px 1px #43aa8b;
+    }
+}
+
+@keyframes box-shadow {
+    20%{
+        box-shadow: 5px 5px 1px #f94144;
+        //background: #f9844a;
+    }
+    40%{
+        box-shadow: 5px 5px 1px #f9844a;
+        //background: #90be6d;
+    }
+    60%{
+        box-shadow: 5px 5px 1px #f9c74f;
+    }
+    80%{
+        box-shadow: 5px 5px 1px #43aa8b;
+    }
 }
 
 .description{
@@ -16,7 +64,8 @@
         border-radius: 12px;
         padding: 4px;
 
-        background-color: darken($color: #bdb2ff, $amount: 20);
+        background: #0E1A29;
+        //background-color: darken($color: #bdb2ff, $amount: 20);
 
         transition: all 0.3s ease;
 
@@ -31,8 +80,13 @@
 
 .play-button{
     margin: 30px 0;
+
     .button{
+        animation: buttonAnimation 10s ease-in-out;
+        animation-iteration-count:infinite;
+
         font-size: 52px;
+        font-weight: bold;
         border: none;
         border-radius: 20px;
         padding-left: 10px;
@@ -41,13 +95,13 @@
 
         background-color: darken($color: #bdb2ff, $amount: 20);
         
-        transition: all 0.5s ease;
+        transition: all 0.2s ease;
         
         &:hover{
             cursor: pointer;
-            background-color: lighten($color: #bdb2ff, $amount: 2);
-            color: darken($color: #bdb2ff, $amount: 50);
-            transform: scale(1.1);
+
+            animation: box-shadow 5s ease;
+            animation-iteration-count:infinite;
         }
     }
     

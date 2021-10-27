@@ -22,17 +22,14 @@ export class GameComponent implements OnInit {
   public startedGame = false;  
   public showBigButton = true
   public difficulty = 1
+  public mistakes = 0
   public victory: boolean = false;
   
   constructor(
     private routes: ActivatedRoute
   ) { 
 
-    /* routes.queryParams.subscribe(params => {
-      console.log(params)
-    }) */
     routes.params.subscribe((p)=>{      
-      //const d = p.dif
       this.difficulty = p.dif      
     })
 
@@ -76,10 +73,6 @@ export class GameComponent implements OnInit {
     this.startGame()
   }
 
-  /* timeout(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  } */
-
   showCardsFirstTime(intervalTime: number){
     const int = interval(intervalTime);
     const subs = int.subscribe( () =>{
@@ -103,8 +96,7 @@ export class GameComponent implements OnInit {
 
   endGame(intervalTime: number){
     const int = interval(intervalTime);
-    const subs = int.subscribe( () =>{
-      console.log("que haces aqui")      
+    const subs = int.subscribe( () =>{    
       this.unflipCardsOpened()
       this.blocked = true;
       this.gameOver = true
@@ -123,7 +115,6 @@ export class GameComponent implements OnInit {
       setTimeout(()=>{
         this.setTimer()
         this.startedGame = true
-        console.log("aaaa")
       },delayAtStart + showingCards)
       
 
@@ -147,6 +138,7 @@ export class GameComponent implements OnInit {
     this.startGame()
     this.gameOver = false
     this.blocked = false
+    this.mistakes = 0;
   }
 
   reset(){
@@ -218,6 +210,7 @@ export class GameComponent implements OnInit {
         }
         else{
           this.flippedCards[index] = 1
+          this.mistakes++
         }
         this.unflipCards(800)
       }
