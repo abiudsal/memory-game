@@ -1,0 +1,82 @@
+<div class="content">
+    <div class="time">
+
+    </div>
+    <div class="board">
+        <div class="element-container">
+
+            <div class="element" *ngFor="let card of cards; index as i">
+                <div (click)="openCard(i)" [ngClass]="{'active': flippedCards[i]!=0}" class="card">
+                    <i *ngIf="flippedCards[i]==0" class='bx bx-question-mark bx-flip-horizontal' ></i>
+                    <i [ngClass]="flippedCards[i]!=0 ? cards[i] : ''" *ngIf="flippedCards[i]" class='bx'></i>
+                </div>
+            </div>
+            <!-- <div (click)="toggle(1)" [ngClass]="{'active': flippedCards[1]}" class="card">
+                <i *ngIf="!flippedCards[1]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[1]" class='bx'></i>
+            </div>
+            <div (click)="toggle(2)" [ngClass]="{'active': flippedCards[2]}" class="card">
+                <i *ngIf="!flippedCards[2]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[2]" class='bx'></i>
+            </div>
+            <div (click)="toggle(3)" [ngClass]="{'active': flippedCards[3]}" class="card">
+                <i *ngIf="!flippedCards[3]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[3]" class='bx'></i> -->
+
+        </div>
+        <!-- <div class="row">
+            <div (click)="toggle(4)" [ngClass]="{'active': flippedCards[4]}" class="card">
+                <i *ngIf="!flippedCards[4]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[4]" class='bx'></i>
+            </div>
+            <div (click)="toggle(5)" [ngClass]="{'active': flippedCards[5]}" class="card">
+                <i *ngIf="!flippedCards[5]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[5]" class='bx'></i>
+            </div>
+            <div (click)="toggle(6)" [ngClass]="{'active': flippedCards[6]}" class="card">
+                <i *ngIf="!flippedCards[6]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[6]" class='bx'></i>
+            </div>
+            <div (click)="toggle(7)" [ngClass]="{'active': flippedCards[7]}" class="card">
+                <i *ngIf="!flippedCards[7]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[7]" class='bx'></i>
+            </div>           
+        </div>
+        <div class="row">
+            <div (click)="toggle(8)" [ngClass]="{'active': flippedCards[8]}" class="card">
+                <i *ngIf="!flippedCards[8]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[8]" class='bx'></i>
+            </div>
+            <div (click)="toggle(9)" [ngClass]="{'active': flippedCards[9]}" class="card">
+                <i *ngIf="!flippedCards[9]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[9]" class='bx'></i>
+            </div>
+            <div (click)="toggle(10)" [ngClass]="{'active': flippedCards[10]}" class="card">
+                <i *ngIf="!flippedCards[10]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[10]" class='bx'></i>
+            </div>
+            <div (click)="toggle(11)" [ngClass]="{'active': flippedCards[11]}" class="card">
+                <i *ngIf="!flippedCards[11]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[11]" class='bx'></i>
+            </div>           
+        </div>
+        <div class="row">
+            <div (click)="toggle(12)" [ngClass]="{'active': flippedCards[12]}" class="card">
+                <i *ngIf="!flippedCards[12]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[12]" class='bx'></i>
+            </div>
+            <div (click)="toggle(13)" [ngClass]="{'active': flippedCards[13]}" class="card">
+                <i *ngIf="!flippedCards[13]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[13]" class='bx'></i>
+            </div>
+            <div (click)="toggle(14)" [ngClass]="{'active': flippedCards[14]}" class="card">
+                <i *ngIf="!flippedCards[14]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[14]" class='bx'></i>
+            </div>
+            <div (click)="toggle(15)" [ngClass]="{'active': flippedCards[15]}" class="card">
+                <i *ngIf="!flippedCards[15]" class='bx bx-question-mark'></i>
+                <i *ngIf="flippedCards[15]" class='bx'></i>
+            </div>           
+        </div> -->
+    </div>
+</div>

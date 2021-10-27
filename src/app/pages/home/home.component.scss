@@ -1,0 +1,54 @@
+.title{
+    font-size: 96px;
+    margin-bottom: 50px;
+}
+
+.description{
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+
+.difficulty{
+    .select-difficulty{
+        font-size: 22px;
+        border: none;
+        border-radius: 12px;
+        padding: 4px;
+
+        background-color: darken($color: #bdb2ff, $amount: 20);
+
+        transition: all 0.3s ease;
+
+        &:hover{
+            cursor: pointer;
+            
+        }
+    }
+    font-size: 22px;
+    margin: 20px 0;
+}
+
+.play-button{
+    margin: 30px 0;
+    .button{
+        font-size: 52px;
+        border: none;
+        border-radius: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px; 
+
+        background-color: darken($color: #bdb2ff, $amount: 20);
+        
+        transition: all 0.5s ease;
+        
+        &:hover{
+            cursor: pointer;
+            background-color: lighten($color: #bdb2ff, $amount: 2);
+            color: darken($color: #bdb2ff, $amount: 50);
+            transform: scale(1.1);
+        }
+    }
+    
+}

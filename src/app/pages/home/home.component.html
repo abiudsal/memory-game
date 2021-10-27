@@ -1,0 +1,19 @@
+<div class="content">
+    <div class="title">
+        Juego de memoria
+    </div>
+    <div class="difficulty">
+        Dificultad:  
+        <select name="difficulty" class="select-difficulty" [(ngModel)]="difficulty">
+            <option value="1">Fácil</option>
+            <option value="2" selected>Normal</option>
+            <option value="3">Difícil</option>
+        </select>
+    </div>
+    <div class="description">
+        {{descriptions[difficulty-1]}}
+    </div>
+    <div class="play-button">
+        <button (click)="navigate()" class="button">Jugar</button>
+    </div>
+</div>
