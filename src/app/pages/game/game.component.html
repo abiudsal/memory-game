@@ -19,7 +19,6 @@
             
             <div class="element" *ngFor="let card of cards; index as i">
                 <div (click)="openCard(i)" [ngClass]="flippedCards[i]!=0 ? 'color'+getIndexIcon(card) : ''" [class.active]="flippedCards[i]!=0" class="card">
-                    <!-- <i *ngIf="flippedCards[i]==0" class='bx bx-question-mark bx-flip-horizontal' ></i> -->
                     <i [ngClass]="flippedCards[i]!=0 ? cards[i] : ''" *ngIf="flippedCards[i]" class='bx'></i>
                 </div>
             </div>            

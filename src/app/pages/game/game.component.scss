@@ -1,3 +1,4 @@
+
 .board{
     position: relative;
     z-index: 1;
@@ -5,6 +6,13 @@
     padding: 10px;
     margin: 20px;
     margin-top: 50px;
+
+    @media (max-width: 400px) {
+        margin-left: 100px;          
+    }  
+    @media (max-width: 330px) {
+        margin-left: 150px;          
+    }  
     
     .time{
         background-color: lighten($color: #0E1A29, $amount: 10);

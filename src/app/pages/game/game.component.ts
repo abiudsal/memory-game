@@ -69,10 +69,6 @@ export class GameComponent implements OnInit {
     }
   }
 
-  onStartGame(){
-    this.startGame()
-  }
-
   showCardsFirstTime(intervalTime: number){
     const int = interval(intervalTime);
     const subs = int.subscribe( () =>{
@@ -85,7 +81,6 @@ export class GameComponent implements OnInit {
   }
 
   enableClick(intervalTime: number){
-    //this.startedGame = true;
     this.showBigButton = false
     const int = interval(intervalTime);
     const subs = int.subscribe( () =>{
@@ -117,7 +112,6 @@ export class GameComponent implements OnInit {
         this.startedGame = true
       },delayAtStart + showingCards)
       
-
       this.endGame(delayAtStart + showingCards + this.time*1000)
     }
   }
@@ -226,5 +220,4 @@ export class GameComponent implements OnInit {
     }    
     return true;
   }
-
 }
