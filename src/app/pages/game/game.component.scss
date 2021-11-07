@@ -2,21 +2,22 @@
 .board{
     position: relative;
     z-index: 1;
-    border-radius: 20px;
-    padding: 10px;
-    margin: 20px;
-    margin-top: 50px;
+    border-radius: 2rem;
+    padding: 1rem;
+    margin: 1rem;
+    margin-top: 5rem;
 
     @media (max-width: 400px) {
-        margin-left: 100px;          
+        margin-left: 10rem;          
     }  
     @media (max-width: 330px) {
-        margin-left: 150px;          
+        margin-left: 5rem;          
     }  
     
     .time{
+        font-size: 1.6rem;
         background-color: lighten($color: #0E1A29, $amount: 10);
-        border-radius: 12px;
+        border-radius: 1.2rem;
         padding: 10px;
         margin: 0px 8px;
         height: 62px;
@@ -95,9 +96,6 @@
                 box-shadow: none !important;
             }
         }
-
-        
-
     }
 }
 

@@ -12,6 +12,7 @@ export class GameComponent implements OnInit {
   public flippedCards: Array<number> = [];
   public cards: Array<string> = [];
   public icons: Array<string> = [];
+  public colors: Array<string> = [];
   public nIcons: Array<number> = [];
   public openedCard = ""
   public iOpenedCard = 0
@@ -33,9 +34,7 @@ export class GameComponent implements OnInit {
       this.difficulty = p.dif      
     })
 
-    this.setTimeByDifficulty()
-
-    
+    this.setTimeByDifficulty()    
     
     for(let i=0; i<16; i++){
       this.flippedCards.push(0);
@@ -53,13 +52,24 @@ export class GameComponent implements OnInit {
       'bxs-tree',
     ]    
 
+    this.colors = [
+      '#f94144',
+      '#f9844a',
+      '#f9c74f',
+      '#90be6d',
+      '#43aa8b',
+      '#4d908e',
+      '#577590',
+      '#277da1',
+    ]    
+
     this.reset()
     this.setCards()
   }
 
   setTimeByDifficulty() {
     if(this.difficulty == 2){
-      this.time = 45
+      this.time = 60
     }
     else if(this.difficulty == 3){
       this.time = 30      
@@ -92,12 +102,14 @@ export class GameComponent implements OnInit {
   endGame(intervalTime: number){
     const int = interval(intervalTime);
     const subs = int.subscribe( () =>{    
-      this.unflipCardsOpened()
-      this.blocked = true;
-      this.gameOver = true
-      this.startedGame = false;
-      subs.unsubscribe()      
-    })
+        if(!this.victory){
+          this.unflipCardsOpened()
+          this.blocked = true;
+          this.gameOver = true
+          this.startedGame = false;
+          subs.unsubscribe()      
+        }
+      })
   }
 
   startGame(){
@@ -120,7 +132,10 @@ export class GameComponent implements OnInit {
     const remainingTime = interval(1000);
     const subscription = remainingTime.subscribe( () =>{
       this.timer --
-      if(this.timer==0){
+      if(this.timer==0 || this.victory){
+        /* if(this.victory){
+          this.startedGame = false;
+        } */
         subscription.unsubscribe()
       }
     })
@@ -131,6 +146,7 @@ export class GameComponent implements OnInit {
     this.setCards()
     this.startGame()
     this.gameOver = false
+    this.victory = false
     this.blocked = false
     this.mistakes = 0;
   }
