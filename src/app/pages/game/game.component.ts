@@ -25,6 +25,7 @@ export class GameComponent implements OnInit {
   public difficulty = 1
   public mistakes = 0
   public victory: boolean = false;
+  subs: any;
   
   constructor(
     private routes: ActivatedRoute
@@ -90,13 +91,13 @@ export class GameComponent implements OnInit {
 
   endGame(intervalTime: number){
     const int = interval(intervalTime);
-    const subs = int.subscribe( () =>{    
+    this.subs = int.subscribe( () =>{    
         if(!this.victory){
           this.unflipCardsOpened()
           this.blocked = true;
           this.gameOver = true
           this.startedGame = false;
-          subs.unsubscribe()      
+          this.subs.unsubscribe();      
         }
       })
   }
@@ -121,7 +122,8 @@ export class GameComponent implements OnInit {
     const remainingTime = interval(1000);
     const subscription = remainingTime.subscribe( () =>{
       if(this.timer==0 || this.victory || this.gameOver){
-        subscription.unsubscribe()
+        subscription.unsubscribe();
+        this.subs.unsubscribe();
       }
       this.timer --
     })
