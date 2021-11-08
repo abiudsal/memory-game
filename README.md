@@ -60,6 +60,9 @@ En dificultades normal o difícil, si se acaba el contador de tiempo antes de qu
 
 ![derrota](src/assets/readme/derrota.png "Derrota")
 
+Para construir el tablero con las 16 tarjetas, se utilizó la directiva `*ngFor`, así como la directiva `[ngClass]` para establecer clases CSS, de esta forma el color de las cartas, así como sus símbolos, se definen dinámicamente y se puede ahorrar código.
+
+Se puede probar la aplicación [aquí](https://abiudsal.github.io/memory-game/)
 
 ## Uso de Angular (autogenerado)
 

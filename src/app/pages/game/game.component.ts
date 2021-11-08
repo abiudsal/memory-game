@@ -52,17 +52,6 @@ export class GameComponent implements OnInit {
       'bxs-tree',
     ]    
 
-    this.colors = [
-      '#f94144',
-      '#f9844a',
-      '#f9c74f',
-      '#90be6d',
-      '#43aa8b',
-      '#4d908e',
-      '#577590',
-      '#277da1',
-    ]    
-
     this.reset()
     this.setCards()
   }
