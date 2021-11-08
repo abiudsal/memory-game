@@ -120,13 +120,10 @@ export class GameComponent implements OnInit {
   setTimer() {
     const remainingTime = interval(1000);
     const subscription = remainingTime.subscribe( () =>{
-      this.timer --
-      if(this.timer==0 || this.victory){
-        /* if(this.victory){
-          this.startedGame = false;
-        } */
+      if(this.timer==0 || this.victory || this.gameOver){
         subscription.unsubscribe()
       }
+      this.timer --
     })
   }
 
@@ -134,6 +131,7 @@ export class GameComponent implements OnInit {
     this.reset()
     this.setCards()
     this.startGame()
+    this.startedGame = false
     this.gameOver = false
     this.victory = false
     this.blocked = false
